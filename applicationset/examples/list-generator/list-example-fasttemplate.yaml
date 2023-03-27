@@ -11,7 +11,7 @@ spec:
             deploymentgroup: deafult
   template:
     metadata:
-      name: '{{app}}-{deploymentgroup}--hpa-policy'
+      name: '{{app}}-{{deploymentgroup}}--hpa-policy'
     spec:
       project: default
       source:

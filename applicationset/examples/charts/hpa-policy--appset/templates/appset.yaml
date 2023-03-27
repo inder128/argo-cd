@@ -20,11 +20,11 @@ spec:
     metadata:
       name: '{{app}}-{deploymentgroup}-{{name}}--hpa-policy'
     spec:
-      project: indeedapply
+      project: default
       source:
-        repoURL: https://code.corp.indeed.com/indeedapply/pure-cluster-state.git
+        repoURL: https://github.com/inder128/argo-cd.git
         targetRevision: master
-        path: charts/hpa-policy
+        path: applicationset/examples/charts/hpa-policy
         helm:
           valueFiles:
             - values-{{values.app}}.yaml

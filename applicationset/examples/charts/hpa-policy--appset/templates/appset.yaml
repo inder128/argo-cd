@@ -16,7 +16,7 @@ spec:
           env: qa
   template:
     metadata:
-      name: '{{.Values.app}}-{{.Values.deploymentgroup}}-{{name}}--hpa-policy'
+      name: '{{.Values.app}}-{{.Values.deploymentgroup}}-{{"{{"}}name{{"}}"}}--hpa-policy'
     spec:
       project: default
       source:

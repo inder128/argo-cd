@@ -13,7 +13,7 @@ spec:
               values:
                 - awscmhqa3
         values:
-          env: '{{metadata.labels.cluster.indeed.com/env}}'
+          env: qa
   template:
     metadata:
       name: '{{.Values.app}}-{{.Values.deploymentgroup}}-{{name}}--hpa-policy'

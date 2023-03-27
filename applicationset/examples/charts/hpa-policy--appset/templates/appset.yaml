@@ -32,7 +32,7 @@ spec:
             cluster: {{"{{"}}name{{"}}"}}
       destination:
         name: '{{"{{"}}name{{"}}"}}'
-        namespace: '{{.Values.app}}--{{values.env}}'
+        namespace: '{{.Values.app}}--{{"{{"}}metadata.labels.cluster.indeed.com/env{{"}}"}}'
       syncPolicy:
         automated:
           prune: true

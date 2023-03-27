@@ -14,11 +14,9 @@ spec:
                 - awscmhqa3
         values:
           env: '{{metadata.labels.cluster.indeed.com/env}}'
-          app: {{.Values.app}}
-          deploymentgroup: {{.Values.deploymentgroup}}
   template:
     metadata:
-      name: '{{app}}-{{deploymentgroup}}-{{name}}--hpa-policy'
+      name: '{{.Values.app}}-{{.Values.deploymentgroup}}-{{name}}--hpa-policy'
     spec:
       project: default
       source:
@@ -27,14 +25,14 @@ spec:
         path: applicationset/examples/charts/hpa-policy
         helm:
           valueFiles:
-            - values-{{values.app}}.yaml
+            - 'values-{{.Values.app}}.yaml'
           values: |
-            app: {{app}}
-            deploymentgroup: {{deploymentgroup}}
-            cluster: {{name}}
+            app: {{.Values.app}}
+            deploymentgroup: {{.Values.deploymentgroup}}
+            cluster: {{.Values.name}}
       destination:
         name: {{name}}
-        namespace: '{{app}}--{{env}}'
+        namespace: '{{.Values.app}}--{{.Values.env}}'
       syncPolicy:
         automated:
           prune: true

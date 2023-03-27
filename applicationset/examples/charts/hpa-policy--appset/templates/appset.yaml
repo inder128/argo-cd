@@ -17,7 +17,7 @@ spec:
           cluster: '{{"{{"}}name{{"}}"}}'
   template:
     metadata:
-      name: '{{.Values.app}}-{{.Values.deploymentgroup}}-{{values.name}}--hpa-policy'
+      name: '{{.Values.app}}-{{.Values.deploymentgroup}}-{{values.cluster}}--hpa-policy'
     spec:
       project: default
       source:

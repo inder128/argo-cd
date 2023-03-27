@@ -14,10 +14,9 @@ spec:
                 - awscmhqa3
         values:
           env: '{{"{{"}}metadata.labels.cluster.indeed.com/env{{"}}"}}'
-          cluster: '{{"{{"}}name{{"}}"}}'
   template:
     metadata:
-      name: '{{.Values.app}}-{{.Values.deploymentgroup}}-{{values.cluster}}--hpa-policy'
+      name: '{{.Values.app}}-{{.Values.deploymentgroup}}-{{"{{"}}name{{"}}"}}--hpa-policy'
     spec:
       project: default
       source:
@@ -30,9 +29,9 @@ spec:
           values: |
             app: {{.Values.app}}
             deploymentgroup: {{.Values.deploymentgroup}}
-            cluster: {{values.cluster}}
+            cluster: {{"{{"}}name{{"}}"}}
       destination:
-        name: {{values.cluster}}
+        name: '{{"{{"}}name{{"}}"}}'
         namespace: '{{.Values.app}}--{{values.env}}'
       syncPolicy:
         automated:
